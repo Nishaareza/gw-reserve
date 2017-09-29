@@ -1,0 +1,8 @@
+<div class="navigation">
+  <div class="ui large menu">
+    <div class="item"
+         *ngFor="let nav of navigationItems">
+      <a [href]='nav.url'>{{nav.title}}</a>
+    </div>
+  </div>
+</div>
