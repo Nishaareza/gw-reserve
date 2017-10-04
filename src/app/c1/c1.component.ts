@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
 export class C1Component {
   constructor() {
     console.log('c1component');
+    alert("c1");
   }
 }

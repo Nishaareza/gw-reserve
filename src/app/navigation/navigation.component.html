@@ -1,8 +1,11 @@
-<div class="navigation">
-  <div class="ui large menu">
-    <div class="item"
-         *ngFor="let nav of navigationItems">
-      <a [href]='nav.url'>{{nav.title}}</a>
-    </div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav"
+        *ngFor="let nav of navigationItems">
+      <li>
+        <a [routerLink]='nav.url'>{{nav.title}}</a>
+        <router-outlet></router-outlet>
+      </li>
+    </ul>
   </div>
-</div>
+</nav>
