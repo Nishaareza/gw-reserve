@@ -2,9 +2,8 @@
   <div class="container-fluid">
     <ul class="nav navbar-nav"
         *ngFor="let nav of navigationItems">
-      <li>
-        <a [routerLink]='nav.url'>{{nav.title}}</a>
-        <router-outlet></router-outlet>
+      <li routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}">
+        <a [routerLink]='nav.url' >{{nav.title}}</a>
       </li>
     </ul>
   </div>

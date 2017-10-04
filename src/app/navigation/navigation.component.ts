@@ -17,11 +17,19 @@ export class NavigationComponent {
    this.navigationItems = [
      {
        title: 'Item 1',
-       url: './c1'
+       url: 'c1'
      },
      {
        title: 'Item 2',
-       url: './c2'
+       url: 'c2'
+     },
+     {
+       title: 'Item 3',
+       url: 'c2/5'
+     },
+     {
+       title: 'Item 4',
+       url: 'c2/500'
      },
    ];
   }
