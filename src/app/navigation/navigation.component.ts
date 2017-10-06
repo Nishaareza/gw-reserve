@@ -16,21 +16,29 @@ export class NavigationComponent {
    console.log('navigation component');
    this.navigationItems = [
      {
-       title: 'Item 1',
+       title: 'Welcome',
+       url: 'welcome'
+     },
+     {
+       title: 'Donkey Kong',
        url: 'c1'
      },
      {
-       title: 'Item 2',
-       url: 'c2'
+       title: 'Sim City',
+       url: 'room/5'
      },
      {
-       title: 'Item 3',
-       url: 'c2/5'
+       title: 'Halo',
+       url: 'room/500'
      },
      {
        title: 'Item 4',
-       url: 'c2/500'
+       url: 'room/50'
      },
+     {
+       title: 'Item 4',
+       url: 'room/55'
+     }
    ];
   }
   showMeTheUrl(url) {

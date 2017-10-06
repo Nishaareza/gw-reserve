@@ -4,7 +4,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, RouterLinkActive } from '@angular/router';
 import { C1Component } from './c1/c1.component';
-import { C2Component } from './c2/c2.component';
+import { RoomComponent } from './room/room.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+
 
 const routes: Routes = [
   {
@@ -17,12 +19,16 @@ const routes: Routes = [
     component: C1Component
   },
   {
-    path: 'c2/:id',
-    component: C2Component
+    path: 'welcome',
+    component: WelcomeComponent
   },
   {
-    path: 'c2',
-    component: C2Component
+    path: 'room/:id',
+    component: RoomComponent
+  },
+  {
+    path: 'room',
+    component: RoomComponent
   },
   {
     path: '**',
@@ -37,7 +43,8 @@ const routes: Routes = [
   ],
   declarations: [
     C1Component,
-    C2Component
+    RoomComponent,
+    WelcomeComponent
   ],
  exports: [
    RouterModule
@@ -46,4 +53,4 @@ const routes: Routes = [
 
 export class AppRoutingModule { }
 
-export const routedComponents = [ C1Component, C2Component];
+export const routedComponents = [ C1Component, RoomComponent, WelcomeComponent ];
