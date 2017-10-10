@@ -15,5 +15,5 @@
     <li><a href="#contact"><button class="buttons btn btn-success" [disabled]="username" (click)="login()">Log In</button></a></li>
     <li><a href="#contact"><button class="buttons btn btn-danger" [disabled]="!username" (click)="logout()">Log Out</button></a></li>
   </ul>
-
+{{ username | json}}
 
