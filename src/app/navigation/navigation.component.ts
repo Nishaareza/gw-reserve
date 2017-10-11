@@ -20,24 +20,12 @@ export class NavigationComponent {
        url: 'welcome'
      },
      {
-       title: 'Donkey Kong',
+       title: 'Room1',
        url: 'c1'
      },
      {
-       title: 'Sim City',
+       title: 'Room2',
        url: 'room/5'
-     },
-     {
-       title: 'Halo',
-       url: 'room/500'
-     },
-     {
-       title: 'Item 4',
-       url: 'room/50'
-     },
-     {
-       title: 'Item 4',
-       url: 'room/55'
      }
    ];
   }
