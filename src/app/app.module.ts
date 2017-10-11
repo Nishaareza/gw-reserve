@@ -1,24 +1,28 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { C1Component } from './c1/c1.component';
-
+import { AppRoutingModule } from './app.routing.module';
+import { LoginComponent } from './navigation/login/login.component';
+import { LoginService } from './services/login.service';
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule
+],
   declarations: [
     NavigationComponent,
     AppComponent,
-    C1Component
+    LoginComponent
   ],
-  imports: [
-    BrowserModule,
-  //  RouterModule.forRoot(routes)
+  providers: [
+    LoginService
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 
