@@ -15,5 +15,5 @@
     <li><button class="buttons btn btn-success" [disabled]="username" (click)="login()">Log In</button></li>
     <li><button class="buttons btn btn-danger" [disabled]="!username" (click)="logout()">Log Out</button></li>
   </ul>
-  <h6>Welcome {{ username | json }}</h6>
+  <h6>Welcome {{ username?.name }}</h6>
 
