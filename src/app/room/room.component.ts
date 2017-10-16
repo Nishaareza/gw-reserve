@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+
 import { ActivatedRoute, ParamMap} from '@angular/router';
 import { ICanDeactivate } from './../services/can-deactivate-guard.service';
 
@@ -7,6 +8,7 @@ import { ICanDeactivate } from './../services/can-deactivate-guard.service';
   templateUrl: './room.component.html',
   styleUrls  : ['./room.component.css']
 })
+
 
 export class RoomComponent implements OnInit {
   public paramMap: string;

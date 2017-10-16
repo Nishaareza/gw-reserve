@@ -8,7 +8,7 @@ import { RoomComponent } from './room/room.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 import { LoginGuardService } from './services/login-guard.service';
-import { CanDeactivateService} from'./services/can-deactivate-guard.service';
+import { CanDeactivateService} from './services/can-deactivate-guard.service';
 
 const routes: Routes = [
   {
@@ -44,11 +44,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes)
-  ],
-  declarations: [
-    C1Component,
-    RoomComponent,
-    WelcomeComponent
   ],
  exports: [
    RouterModule

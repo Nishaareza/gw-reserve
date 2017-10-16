@@ -1,2 +1,7 @@
 <h1>Welcome To Room Reservation</h1>
 <img src="./../assets/conference.jpg"/>
+
+<div *ngIf="isShowingLoginWarning" class="">
+  <i class="" (click)="closeWarnings()"></i>
+  Login required to navigate to rooms.
+</div>
