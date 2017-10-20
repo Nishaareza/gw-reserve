@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { ActivatedRoute, ParamMap} from '@angular/router';
+import { ICanDeactivate } from './../services/can-deactivate-guard.service';
 
 @Component({
   selector   : 'app-room-component',
@@ -7,12 +9,15 @@ import { ActivatedRoute, ParamMap} from '@angular/router';
   styleUrls  : ['./room.component.css']
 })
 
+
 export class RoomComponent implements OnInit {
   public paramMap: string;
+  public canThisDeactivate: boolean;
   constructor(
     private activeRoute: ActivatedRoute
-
-  ) { }
+  ) {
+    this.canThisDeactivate = true;
+  }
   ngOnInit() {
     console.log('Component Room Init');
     // do this when you know user won't change url
@@ -23,6 +28,12 @@ export class RoomComponent implements OnInit {
       console.log('param map', parameters.get('id'));
       this.paramMap =  parameters.get('id');
     });
+  }
+  toggleCanDeactivate() {
+    this.canThisDeactivate = !this.canThisDeactivate;
+  }
+  canDeactivate() {
+    return this.canThisDeactivate;
   }
 }
 

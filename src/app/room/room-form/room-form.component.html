@@ -1,0 +1,40 @@
+<div>
+  <form #myForm="ngForm" class="form-group" (ngSubmit)="onSubmit(myForm)" novalidate>
+    <div>{{ roomId}}
+      <label>User Name:</label>
+      <input type="text" name="myTextInput" class="form-control" ngModel required #myTextInput="ngModel">
+    </div><br />
+    <div>
+      <label>Email:</label>
+      <input type="email" name="myEmailInput" class="form-control" ngModel required #myEmailInput="ngModel">
+    </div><br />
+    <label>Reservation Reason:</label>
+    <select name="reservationReason" class="form-control" ngModel required  #reservationReason="ngModel">
+      <option *ngFor = 'let value of options' [value]='value'>{{ value}}</option>
+    </select><br />
+    <div class="">
+      <div class="">
+        <label>Start Time:</label>
+        <input name="startTime" type="time" class="form-control" ngModel required #myForm.startTime="ngModel">
+      </div>
+      <div class="field">
+        <label>End Time:</label>
+        <input name="endTime" type="time" class="form-control" ngModel required #myForm.endTime="ngModel" required>
+      </div>
+    </div>
+    <div class="">
+      <div class="">
+        <label>Person to Contact:</label>
+        <input name="email1" type="email" class="form-control" ngModel #myForm.email1="ngModel" required email>
+      </div>
+      <div class="">
+        <label>Person to Contact (confirm):</label>
+        <input name="email2" type="email" class="form-control" ngModel #myForm.email2="ngModel" required email>
+      </div>
+    </div><br />
+    <div>
+      <button type="submit" class="btn btn-info btn-block">Submit</button>
+    </div><br />
+  </form>
+  <pre>{{myForm.value | json}}</pre>
+</div>

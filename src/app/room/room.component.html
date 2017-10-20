@@ -1,1 +1,9 @@
 <div>Route param is {{ paramMap }}</div>
+
+
+
+<div>
+  <app-room-form-component [roomId]=paramMap></app-room-form-component>
+  <hr class="featurette-divider">
+  <app-room-list-component [roomId]=paramMap></app-room-list-component>
+</div>
