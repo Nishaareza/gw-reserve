@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RoomFormComponent} from './room/room-form/room-form.component';
-
+import { RoomListComponent } from './room/room-list/room-list.component';
 
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -23,7 +23,8 @@ import { LoginService } from './services/login.service';
     AppComponent,
     LoginComponent,
     routedComponents,
-    RoomFormComponent
+    RoomFormComponent,
+    RoomListComponent
   ],
   providers: [
     LoginService
