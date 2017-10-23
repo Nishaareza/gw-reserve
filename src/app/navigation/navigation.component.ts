@@ -21,11 +21,11 @@ export class NavigationComponent {
      },
      {
        title: 'Room1',
-       url: 'room/1'
+       url: 'rooms/1'
      },
      {
        title: 'Room2',
-       url: 'room/2'
+       url: 'rooms/2'
      }
    ];
   }
