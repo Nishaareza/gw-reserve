@@ -1,10 +1,8 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RoomFormComponent} from './room/room-form/room-form.component';
-import { RoomListComponent } from './room/room-list/room-list.component';
 
+import { RoomModule } from './room/room.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AppRoutingModule, routedComponents  } from './app.routing.module';
@@ -15,16 +13,14 @@ import { LoginService } from './services/login.service';
 @NgModule({
   imports: [
     BrowserModule,
+    RoomModule,
     AppRoutingModule,
-    FormsModule
 ],
   declarations: [
     NavigationComponent,
     AppComponent,
     LoginComponent,
     routedComponents,
-    RoomFormComponent,
-    RoomListComponent
   ],
   providers: [
     LoginService
