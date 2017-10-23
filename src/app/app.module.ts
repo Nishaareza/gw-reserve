@@ -9,10 +9,18 @@ import { AppRoutingModule, routedComponents  } from './app.routing.module';
 import { LoginComponent } from './navigation/login/login.component';
 import { LoginService } from './services/login.service';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from './../environments/environment';
+
 
 @NgModule({
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebaseConfiguration),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
     RoomModule,
     AppRoutingModule,
 ],
