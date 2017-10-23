@@ -1,5 +1,5 @@
 <div>
-  <form #myForm="ngForm" class="form-group" (ngSubmit)="onSubmit(myForm)" novalidate>
+  <form #myForm="ngForm" class="form-group" (ngSubmit)="onSubmit(myForm.value)" novalidate>
     <div>{{ roomId}}
       <label>User Name:</label>
       <input type="text" name="myTextInput" class="form-control" ngModel required #myTextInput="ngModel">

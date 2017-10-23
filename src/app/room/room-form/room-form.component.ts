@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, ViewChild} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -11,14 +11,15 @@ import { ICanDeactivate } from './../../services/can-deactivate-guard.service';
 })
 
 export class RoomFormComponent implements OnInit, ICanDeactivate {
-  // @ViewChild("myForm")
-  // private _myForm: NgForm;
+  @ViewChild('myForm')
+  private _myForm: NgForm;
   public options: string[];
   @Input()
   public roomId: string;
-  onSubmit(f: NgForm) {
-    console.log(f.value);
-    f.reset();
+  public onSubmit(reservationValues) {
+    const message = 'Room reservation submitted';
+    console.log(message, reservationValues);
+    this._myForm.reset();
   }
   constructor(private _activatedRoute: ActivatedRoute) {}
   ngOnInit() {
@@ -30,6 +31,11 @@ export class RoomFormComponent implements OnInit, ICanDeactivate {
     this._activatedRoute.parent.paramMap.subscribe(param => {
       this._switchRoom(param.get('id'));
     });
+  }
+
+  public canDeactivate() {
+    if (this._myForm.pristine || this._myForm.submitted) return true;
+    return confirm('You appear to have unsaved changes. Discard and continue');
   }
   private _switchRoom(id: string) {
     this.roomId = id;
