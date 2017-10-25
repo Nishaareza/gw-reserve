@@ -1,5 +1,5 @@
-
-  <ul class="nav navbar-nav pull-right form-group">
+ <ul class="nav navbar-nav pull-right form-group">
+   <li><h4>{{ loggedInUser?.displayName }}</h4></li>
     <li>
       <select class="form-control">
         <option *ngFor="let userChoice of userChoices">{{userChoice}}</option>
@@ -12,8 +12,8 @@
       <!--</ul>-->
     <!--</li>-->
 
-    <li><button class="buttons btn btn-success" [disabled]="username" (click)="login()">Log In</button></li>
-    <li><button class="buttons btn btn-danger" [disabled]="!username" (click)="logout()">Log Out</button></li>
+    <li><button class="buttons btn btn-success navbar-btn" [disabled]="loggedInUser" (click)="login()">Log In</button></li>
+    <li><button class="buttons btn btn-danger navbar-btn" [disabled]="!loggedInUser" (click)="logout()">Log Out</button></li>
   </ul>
-  <h6>Welcome {{ username?.name }}</h6>
+
 

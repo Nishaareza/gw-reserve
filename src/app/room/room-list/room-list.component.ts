@@ -9,7 +9,6 @@ import { IReservation } from './../../interfaces/IReservation';
 })
 
 export class RoomListComponent implements OnInit {
-  @Input()
   public roomId: string;
   public reservations: IReservation[];
 
