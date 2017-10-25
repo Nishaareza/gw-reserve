@@ -11,7 +11,11 @@ export class LoginService {
     this._loggedInUser = _authService.authState;
   }
 
-  public login(): Promise<any> {
+  public login(userChoice): Promise<any> {
+    if (userChoice === 'Google') {
+      return this._authService.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+        .catch(error => alert(error.message));
+    }
     return this._authService.auth.signInWithPopup(new firebase.auth.GithubAuthProvider())
       .catch(error => alert(error.message));
   }

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   public userChoices: string[] = ['Google', 'GitHub'];
+  public choice = '' ;
   public selectedValue = null;
   public loggedInUser;
   constructor(
@@ -28,7 +29,7 @@ export class LoginComponent {
   }
 
   public login() {
-    this._loginService.login();
+    this._loginService.login(this.choice);
     if (this._router.url.substr(0, 6) === '/rooms') this._router.navigateByUrl('/welcome');
   }
 
@@ -39,5 +40,8 @@ export class LoginComponent {
   get username() {
     // this will always get the latest from our service
     return this._loginService.getLoggedInUser();
+  }
+  public onChangeValue(userChoice) {
+    this.choice = userChoice;
   }
 }
