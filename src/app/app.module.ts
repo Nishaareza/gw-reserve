@@ -8,6 +8,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { AppRoutingModule, routedComponents  } from './app.routing.module';
 import { LoginComponent } from './navigation/login/login.component';
 import { LoginService } from './services/login.service';
+import { RoomService } from './services/room.service';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -31,7 +32,8 @@ import { environment } from './../environments/environment';
     routedComponents,
   ],
   providers: [
-    LoginService
+    LoginService,
+    RoomService
   ],
   bootstrap: [AppComponent]
 })
