@@ -1,5 +1,6 @@
  <ul class="nav navbar-nav pull-right form-group">
    <li><h4>{{ loggedInUser?.displayName }}</h4></li>
+   <li><img class="img-thumbnail" width="50px" [src]="loggedInUser?.photoURL"></li><br/>
     <li>
       <select class="form-control" (change)="onChangeValue($event.target.value)">
         <option *ngFor="let userChoice of userChoices" onChange>{{userChoice}}</option>

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls  : ['./login.component.css']
 })
 export class LoginComponent {
-  public userChoices: string[] = ['Google', 'GitHub'];
+  public userChoices: string[] = ['Google', 'GitHub', 'Facebook'];
   public choice = '' ;
   public selectedValue = null;
   public loggedInUser;
@@ -20,7 +20,7 @@ export class LoginComponent {
         if (!user) return;
         return {
           displayName: user.displayName,
-          pictureURL: user.photoURL
+          photoURL: user.photoURL
         }
       })
       .subscribe(user => {

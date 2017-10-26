@@ -15,6 +15,9 @@ export class LoginService {
     if (userChoice === 'Google') {
       return this._authService.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
         .catch(error => alert(error.message));
+    } else if (userChoice === 'Facebook') {
+        return this._authService.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+          .catch(error => alert(error.message));
     }
     return this._authService.auth.signInWithPopup(new firebase.auth.GithubAuthProvider())
       .catch(error => alert(error.message));
