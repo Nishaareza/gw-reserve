@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validator, Validators } from '@angular/forms';
 import {  ActivatedRoute } from '@angular/router';
 
 import { IReservationForm } from './IReservationForm';
@@ -39,8 +39,8 @@ export class RoomReactiveFormComponent implements OnInit, ICanDeactivate {
       isAgreed: [false, Validators.requiredTrue],
       email: ['', [Validators.required, Validators.email]],
       emailConfirmation: '',
-      startDateTime: [this._getDefaultStartDate(), Validators.required],
-      endDateTime: [this._getDefaultEndDate(), Validators.required],
+      startDateTime: [this._getDefaultStartDate().toTimeString().split(' ')[0], Validators.required],
+      endDateTime: [this._getDefaultEndDate().toTimeString().split(' ')[0], Validators.required],
       reason: ['', Validators.required]
     };
     this.myForm = this._formBuilder.group(formFields, {

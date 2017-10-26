@@ -5,8 +5,8 @@
   </h1>
   <form [formGroup]="myForm" class="form-group" (ngSubmit)="onSubmit(myForm.value)" novalidate>
     <label>Reservation Reason:</label>
-    <select name="reservationReason" class="form-control" required >
-      <option *ngFor = 'let value of reasons' [value]='value'>{{ value}}</option>
+    <select name="reservationReason" class="form-control" formControlName="reason" required >
+      <option *ngFor = 'let reason of reasons' [value]='reason'>{{ reason }}</option>
     </select><br />
     <div class="">
       <div class="">
