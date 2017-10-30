@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IReservation } from './../../interfaces/IReservation';
+
+import { IRoom } from './../../interfaces/IRoom';
+import { RoomService } from './../../services/room.service';
+
 
 @Component({
   selector: 'app-room-list-component',
@@ -9,19 +12,19 @@ import { IReservation } from './../../interfaces/IReservation';
 })
 
 export class RoomListComponent implements OnInit {
-  public roomId: string;
-  public reservations: IReservation[];
-
-  constructor(private _activatedRoute: ActivatedRoute) {}
+  public room: IRoom;
+  constructor(
+    private _activatedRoute: ActivatedRoute,
+    private _roomService: RoomService
+  ) {}
 
   ngOnInit() {
-    this.reservations = [];
-
-    this._activatedRoute.parent.paramMap.subscribe(param => {
-      this._switchRoom(param.get('id'));
-    });
+    this._activatedRoute.parent.paramMap.subscribe(route => this._switchRoom(route.get('id')));
+  }
+  public deleteReservation(id) {
+    this._roomService.deleteRoomReservation(this.room.id, id);
   }
   private _switchRoom(id: string) {
-    this.roomId = id;
+    this._roomService.getRoomById(id).subscribe(room => { this.room = room; });
   }
 }

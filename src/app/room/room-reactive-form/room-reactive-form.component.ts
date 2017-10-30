@@ -1,11 +1,12 @@
 import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validator, Validators } from '@angular/forms';
-import {  ActivatedRoute } from '@angular/router';
+import {  ActivatedRoute, Router } from '@angular/router';
 
 import { IReservationForm } from './IReservationForm';
 import { ICanDeactivate } from './../../services/can-deactivate-guard.service';
 
 import { validateMatching } from './../../validators/validateMatching';
+import { RoomService } from './../../services/room.service';
 
 @Component({
   selector: 'app-room-reactive-form',
@@ -19,7 +20,9 @@ export class RoomReactiveFormComponent implements OnInit, ICanDeactivate {
   private _submitted: boolean;
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _roomService: RoomService,
+    private _router: Router
   ) { }
 
   public ngOnInit() {
@@ -39,8 +42,8 @@ export class RoomReactiveFormComponent implements OnInit, ICanDeactivate {
       isAgreed: [false, Validators.requiredTrue],
       email: ['', [Validators.required, Validators.email]],
       emailConfirmation: '',
-      startDateTime: [this._getDefaultStartDate().toTimeString().split(' ')[0], Validators.required],
-      endDateTime: [this._getDefaultEndDate().toTimeString().split(' ')[0], Validators.required],
+      startTime: [this._getDefaultStartDate().toTimeString().split(' ')[0], Validators.required],
+      endTime: [this._getDefaultEndDate().toTimeString().split(' ')[0], Validators.required],
       reason: ['', Validators.required]
     };
     this.myForm = this._formBuilder.group(formFields, {
@@ -59,6 +62,8 @@ export class RoomReactiveFormComponent implements OnInit, ICanDeactivate {
     this._submitted = true;
     console.log(message, reservationValues);
     alert(message);
+    return this._roomService.writeRoomReservation(this.roomId, this.myForm.value)
+      .then(() => this._router.navigate(['../list'], { relativeTo: this._activatedRoute }));
   }
 
   private _switchRoom(id: string) {

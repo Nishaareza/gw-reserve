@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, ParamMap} from '@angular/router';
-import { ICanDeactivate } from './../services/can-deactivate-guard.service';
+
+import { RoomService } from './../services/room.service';
 
 @Component({
   selector   : 'app-room-component',
@@ -11,29 +12,21 @@ import { ICanDeactivate } from './../services/can-deactivate-guard.service';
 
 
 export class RoomComponent implements OnInit {
-  public paramMap: string;
-  public canThisDeactivate: boolean;
+ public room;
   constructor(
-    private activeRoute: ActivatedRoute
-  ) {
-    this.canThisDeactivate = true;
-  }
+    private activeRoute: ActivatedRoute,
+    private _roomService: RoomService
+  ) { }
   ngOnInit() {
     console.log('Component Room Init');
     // do this when you know user won't change url
     console.log('Snapshot', this.activeRoute.snapshot.paramMap.get('id'));
 
     // current way
-    this.activeRoute.paramMap.subscribe((parameters: ParamMap) => {
-      console.log('param map', parameters.get('id'));
-      this.paramMap =  parameters.get('id');
-    });
+    this.activeRoute.paramMap.subscribe(route => this._switchRoom(route.get('id')));
   }
-  toggleCanDeactivate() {
-    this.canThisDeactivate = !this.canThisDeactivate;
-  }
-  canDeactivate() {
-    return this.canThisDeactivate;
+  private _switchRoom(id: string) {
+    this._roomService.getRoomById(id).subscribe(room => { this.room = room });
   }
 }
 
