@@ -1,13 +1,5 @@
 <div>
   <form #myForm="ngForm" class="form-group" (ngSubmit)="onSubmit(myForm.value)" novalidate>
-    <div>{{ roomId}}
-      <label>User Name:</label>
-      <input type="text" name="myTextInput" class="form-control" ngModel required #myTextInput="ngModel">
-    </div><br />
-    <div>
-      <label>Email:</label>
-      <input type="email" name="myEmailInput" class="form-control" ngModel required #myEmailInput="ngModel">
-    </div><br />
     <label>Reservation Reason:</label>
     <select name="reservationReason" class="form-control" ngModel required  #reservationReason="ngModel">
       <option *ngFor = 'let value of options' [value]='value'>{{ value}}</option>

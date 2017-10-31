@@ -6,15 +6,18 @@ import { LoginService } from './login.service';
 
 @Injectable()
 export class LoginGuardService implements CanActivate {
-  constructor(private _loginService: LoginService, private router: Router) {}
+  private _isUserLoggedIn: boolean;
+  constructor(private _loginService: LoginService, private _router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot, routerState: RouterStateSnapshot) {
-    console.log(routerState);
-    const user = this._loginService.getLoggedInUser();
-    if (user === null) {
-      this.router.navigate(['welcome'], {fragment: 'warning'});
-      return false;
-    }
-    return true;
+  canActivate() {
+   return this._loginService.getLoggedInUser().map(
+     loggedInUser => {
+       if (loggedInUser) return true;
+       this._router.navigate(['welcome'], {
+         fragment: 'login needed'
+       });
+       return false;
+     }
+   );
   }
 }

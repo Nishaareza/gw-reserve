@@ -1,0 +1,43 @@
+<div>
+  <button class="btn btn-default" routerLink="../form">USE TEMPLATE DRIVEN FORM</button>
+  <h1>
+    Make Reservation for Room of ID: {{ roomId }}
+  </h1>
+  <form [formGroup]="myForm" class="form-group" (ngSubmit)="onSubmit(myForm.value)" novalidate>
+    <label>Reservation Reason:</label>
+    <select name="reservationReason" class="form-control" formControlName="reason" required >
+      <option *ngFor = 'let reason of reasons' [value]='reason'>{{ reason }}</option>
+    </select><br />
+    <div class="">
+      <div class="">
+        <label>Start Time:</label>
+        <input type="time" class="form-control" formControlName="startTime">
+      </div>
+      <div class="field">
+        <label>End Time:</label>
+        <input type="time" class="form-control" formControlName="endTime" required>
+      </div>
+    </div>
+    <div class="">
+      <div class="">
+        <label>Person to Contact:</label>
+        <input name="email1" type="email" class="form-control" formControlName="email" required email>
+      </div>
+      <div class="">
+        <label>Person to Contact (confirm):</label>
+        <input name="emailConfirmation" type="email" class="form-control" formControlName="emailConfirmation" required email>
+      </div>
+      <div class="">
+        <label>I agree to be clean and good to the room:</label>
+        <input type="checkbox" formControlName="isAgreed">
+      </div>
+    </div><br />
+    <div>
+      <button type="submit"
+              class="btn btn-info btn-block"
+              [ngClass]="{ negative: myForm.invalid }"
+              [disabled]="myForm.invalid">Submit</button>
+    </div><br />
+  </form>
+  <pre>{{myForm.value | json}}</pre>
+</div>

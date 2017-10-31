@@ -1,18 +1,20 @@
 <div>
   <h1 class="">
-    Room Reservations for ID: {{ roomId }}
+    Room Reservations for ID: {{ room?.name }}
   </h1>
 
   <div class="">
-    <button  routerLink="../form">Make One</button>
-    <p>There are {{ reservations?.length || 'no'}} reservation(s) today</p>
+    <button  routerLink="../reactive-form">Make Reservation</button>
+    <p>There are {{ room?.reservations?.length || 'no'}} reservation(s) today</p>
   </div>
-
-  <div *ngFor="let reservation of reservations">
+  <div *ngIf="room?.reservations">
+  <div *ngFor="let reservation of room?.reservations">
     <p>
+      <a  (click)="deleteReservation(reservation.id)">Delete</a>
       <span class="reservation-row-header">{{reservation.email}}</span>
       <span class="reservation-row-reason">{{reservation.reason}}</span>
-      <span class="reservation-row-date">{{reservation.startDateTime}} - {{reservation.endDateTime}}</span>
+      <span class="reservation-row-date">{{reservation.startTime}} - {{reservation.endTime}}</span>
     </p>
+  </div>
   </div>
 </div>

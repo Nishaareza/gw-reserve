@@ -14,7 +14,6 @@ export class RoomFormComponent implements OnInit, ICanDeactivate {
   @ViewChild('myForm')
   private _myForm: NgForm;
   public options: string[];
-  @Input()
   public roomId: string;
   public onSubmit(reservationValues) {
     const message = 'Room reservation submitted';

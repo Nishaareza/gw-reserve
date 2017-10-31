@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from './../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector   : 'app-login-component',
@@ -7,20 +8,40 @@ import { LoginService } from './../../services/login.service';
   styleUrls  : ['./login.component.css']
 })
 export class LoginComponent {
-  public userChoices: string[] = ['Google', 'GitHub'];
+  public userChoices: string[] = ['Google', 'GitHub', 'Facebook'];
+  public choice = '' ;
   public selectedValue = null;
-  constructor(private loginService: LoginService) { }
+  public loggedInUser;
+  constructor(
+    private _loginService: LoginService,
+    private _router: Router) {
+    this._loginService.getLoggedInUser()
+      .map(user => {
+        if (!user) return;
+        return {
+          displayName: user.displayName,
+          photoURL: user.photoURL
+        }
+      })
+      .subscribe(user => {
+        this.loggedInUser = user;
+      });
+  }
 
   public login() {
-    this.loginService.login();
+    this._loginService.login(this.choice);
+    if (this._router.url.substr(0, 6) === '/rooms') this._router.navigateByUrl('/welcome');
   }
 
   public logout() {
-    this.loginService.logout();
+    this._loginService.logout();
   }
 
   get username() {
     // this will always get the latest from our service
-    return this.loginService.getLoggedInUser();
+    return this._loginService.getLoggedInUser();
+  }
+  public onChangeValue(userChoice) {
+    this.choice = userChoice;
   }
 }

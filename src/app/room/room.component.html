@@ -1,8 +1,17 @@
-<div>Route param is {{ paramMap }}</div>
+<div class="ui room container">
+  <img class="room-image" [src]="'/assets/' + room?.picture" [@onLoad]="state">
+  <div class="ui padded grid">
+    <div class="row">
+      <div class="six wide computer only column">
+        <div class="room-content">
 
-
-
-<div>
-
-  <router-outlet></router-outlet>
+        </div>
+      </div>
+      <div class="sixteen wide tablet ten wide computer column">
+        <div class="room-content">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
