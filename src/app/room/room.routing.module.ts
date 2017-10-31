@@ -18,12 +18,12 @@ const routes: Routes = [
     children: [
       {
         path: 'reactive-form',
-        component: RoomFormComponent,
+        component: RoomReactiveFormComponent,
         canDeactivate: [CanDeactivateGuardService]
       },
       {
         path: 'form',
-        component: RoomReactiveFormComponent,
+        component: RoomFormComponent,
         canDeactivate: [CanDeactivateGuardService]
       },
       {

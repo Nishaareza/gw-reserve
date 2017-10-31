@@ -1,5 +1,6 @@
 
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { RoomModule } from './room/room.module';
@@ -19,6 +20,7 @@ import { environment } from './../environments/environment';
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfiguration),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
