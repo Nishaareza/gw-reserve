@@ -8,5 +8,6 @@ export interface IReservation {
   endTime: string;
   emailConfirmation: string;
   isAgreed: string;
+  [propName: string]: any;
 }
 

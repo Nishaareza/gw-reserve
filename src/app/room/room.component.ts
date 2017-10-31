@@ -7,14 +7,14 @@ import { IRoom } from './../interfaces/IRoom';
 const animations = [
     trigger('onLoad', [
       state('init', style({
-        bottom : '-420px',
-        opacity: 0
+        bottom : '-150px',
+        opacity: .2
       })),
       state('complete', style({
         bottom: '-110px',
         opacity: .5
       })),
-      transition('init => complete', animate('1220ms ease-out'))
+      transition('init => complete', animate('300ms ease-out'))
     ])
 ];
 

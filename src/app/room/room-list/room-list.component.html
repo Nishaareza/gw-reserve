@@ -9,12 +9,12 @@
   </div>
   <div *ngIf="room?.reservations">
   <div *ngFor="let reservation of room?.reservations">
-    <p>
+    <div [@onLoad] = "reservation.isTadaTime ? 'complete' : 'init'">
       <a  (click)="deleteReservation(reservation.id)">Delete</a>
       <span class="reservation-row-header">{{reservation.email}}</span>
       <span class="reservation-row-reason">{{reservation.reason}}</span>
       <span class="reservation-row-date">{{reservation.startTime}} - {{reservation.endTime}}</span>
-    </p>
+    </div>
   </div>
   </div>
 </div>

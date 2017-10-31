@@ -1,14 +1,30 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import { IRoom } from './../../interfaces/IRoom';
 import { RoomService } from './../../services/room.service';
+
+const animations = [
+    trigger('onLoad', [
+      state('init', style({
+        transform: 'translateX(-10%)',
+        opacity: 0
+      })),
+      state('complete', style({
+        transform: 'translateX(0)',
+        opacity: 1
+      })),
+      transition('init => complete', animate('150ms ease-out'))
+    ])
+];
 
 
 @Component({
   selector: 'app-room-list-component',
   templateUrl: './room-list.component.html',
-  styleUrls: ['./room-list.component.css']
+  styleUrls: ['./room-list.component.css'],
+  animations
 })
 
 export class RoomListComponent implements OnInit {
@@ -25,6 +41,15 @@ export class RoomListComponent implements OnInit {
     this._roomService.deleteRoomReservation(this.room.id, id);
   }
   private _switchRoom(id: string) {
-    this._roomService.getRoomById(id).subscribe(room => { this.room = room; });
+    this._roomService.getRoomById(id)
+      .map(room => {
+          room.reservations.forEach((reservation, index) => {
+            setTimeout(() => {
+              reservation.isTadaTime = true;
+            }, 100 * index);
+          });
+          return room;
+      })
+      .subscribe(room => { this.room = room; });
   }
 }
